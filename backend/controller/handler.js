@@ -1,10 +1,13 @@
 const User = require('../database/user-schema');
 const Consult = require('../database/consult-schema');
 
+
 const homeRoute = async (req, res) => {
     res.status(200).json({ message: "Welcome to NirogSathi" });
 }
 
+
+//REGISTER
 const signupHandler = async (req, res) => {
     try {
         const user = new User(req.body);
@@ -21,10 +24,20 @@ const signupHandler = async (req, res) => {
     }
 }
 
+
+//LOGIN
 const loginHandler = async (req, res) => {
     try {
-        const { biometric } = req.body;
-        const result = await User.findOne({ biometric });
+        let query = {};
+        const { biometric, phone } = req.query;
+
+        if (!biometric) {
+            query = { phone };
+        } else {
+            query = { biometric };
+        }
+
+        const result = await User.findOne(query);
         if (result) {
             return res.status(200).json(result);;
         } else {
@@ -37,6 +50,8 @@ const loginHandler = async (req, res) => {
     }
 }
 
+
+//CREATE NEW CONSULTATION
 const consultHandler = async (req, res) => {
     try {
         const consult = new Consult(req.body);
@@ -53,6 +68,8 @@ const consultHandler = async (req, res) => {
     }
 }
 
+
+//READ CONSULTATION
 const readConsult = async (req, res) => {
     try {
         let query;
@@ -80,6 +97,7 @@ const readConsult = async (req, res) => {
         return res.status(500).json({ message: "Server Down" });
     }
 }
+
 
 module.exports = {
     homeRoute,
