@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const routes = require('./router/routes');
-const sqlconn = require('./database/database');
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
 PORT = process.env.PORT;
@@ -13,12 +12,8 @@ app.use(cors({
     origin: "*"
 }));
 
-sqlconn.connect(()=>{
-    console.log('Database Connected');
-});
-
+require('./database/connect');
 app.use('/api', routes);
-
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);

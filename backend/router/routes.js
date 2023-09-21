@@ -3,12 +3,13 @@ const route = express.Router();
 const {
     homeRoute,
     signupHandler,
-    loginHandler
+    loginHandler,
+    consultHandler
 } = require('../controller/handler');
-
 
 route.get('/', homeRoute);
 route.post('/signup', signupHandler);
 route.post('/login', loginHandler);
+route.post('/consult', consultHandler);
 
 module.exports = route;
