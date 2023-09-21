@@ -4,12 +4,14 @@ const {
     homeRoute,
     signupHandler,
     loginHandler,
-    consultHandler
+    consultHandler,
+    readConsult
 } = require('../controller/handler');
 
 route.get('/', homeRoute);
 route.post('/signup', signupHandler);
 route.post('/login', loginHandler);
 route.post('/consult', consultHandler);
+route.get('/consult', readConsult);
 
 module.exports = route;
