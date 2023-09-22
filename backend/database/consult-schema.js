@@ -16,6 +16,10 @@ const consult = new mongo.Schema({
     concern:[{
         type:String,
         required:false
+    }],
+    timestamp:[{
+        type:Number,
+        required:false
     }]
 })
 

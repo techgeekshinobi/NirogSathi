@@ -55,6 +55,7 @@ const loginHandler = async (req, res) => {
 const consultHandler = async (req, res) => {
     try {
         const consult = new Consult(req.body);
+        consult.timestamp = Date.now();
         const result = await consult.save();
         if (result) {
             res.status(201).json(result);
