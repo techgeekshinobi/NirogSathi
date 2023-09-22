@@ -6,8 +6,10 @@ const consult = new mongo.Schema({
         required: true
     }],
     "Chatbot Response": [{
-        type: String,
-        required: true
+        patient_id:{
+            type: String,
+            required: true
+        }
     }]
 })
 
