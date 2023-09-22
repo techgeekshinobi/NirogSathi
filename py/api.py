@@ -1,7 +1,7 @@
 import requests
 
 def create_consult(params):
-    url="http://192.168.137.1:8000/api/consult"
+    url="https://nirog-sathi-5xcq.onrender.com/api/consult"
     print("\ndata to send\n")
     print(type(params))
     data=params
