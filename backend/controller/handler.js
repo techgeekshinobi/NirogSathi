@@ -54,6 +54,7 @@ const loginHandler = async (req, res) => {
 //CREATE NEW CONSULTATION
 const consultHandler = async (req, res) => {
     try {
+        console.log(req.body);
         const consult = new Consult(req.body);
         consult.timestamp = Date.now();
         const result = await consult.save();
