@@ -92,7 +92,9 @@ const readConsult = async (req, res) => {
 
         const result = await Consult.find(query);
         if (result) {
-            return res.status(200).json(result);
+            const consultation = result["Chatbot Response"];
+            const con_data = await consultation.json();
+            return res.status(200).json(con_data);
         } else {
             return res.status(404).json({ message: "No consultation fount" })
         }
