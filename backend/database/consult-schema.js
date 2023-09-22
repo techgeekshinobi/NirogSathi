@@ -1,21 +1,15 @@
 const mongo = require('mongoose');
 
 const consult = new mongo.Schema({
-    patient_id:{
-        type:String,
-        required:true
-    },
-    description:{
-        type:String,
-        required:false
-    },
-    symptoms:[{
-        type:String,
-        required:false
+    "Voice Input": [{
+        type: String,
+        required: true
     }],
-    concern:[{
-        type:String,
-        required:false
+    "Chatbot Response": [{
+        patient_id:{
+            type: String,
+            required: true
+        }
     }]
 })
 
