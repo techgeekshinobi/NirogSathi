@@ -10,11 +10,6 @@ const homeRoute = async (req, res) => {
 //REGISTER
 const signupHandler = async (req, res) => {
     try {
-        const biometric = req.body.biometric;
-        const exist = await User.findOne({ biometric });
-        if(exist){
-            return res.status(409).send({message: "User already exists"});
-        }
         const user = new User(req.body);
         const result = await user.save();
         if (result) {
