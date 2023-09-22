@@ -7,7 +7,7 @@ const consult = new mongo.Schema({
     },
     description:{
         type:String,
-        required:true
+        required:false
     },
     symptoms:[{
         type:String,
